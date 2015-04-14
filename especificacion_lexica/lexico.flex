@@ -56,7 +56,8 @@ vector 			= {identificador}"["[0-9]+"]"
 			}
 "until"         {	if(debug) System.out.println("token UNTIL");
 			return sf.newSymbol("UNTIL",sym.UNTIL);
-"for"			{ 	if(debug) System.out.println("token FOR");
+			}
+"for"		{ 	if(debug) System.out.println("token FOR");
 			return sf.newSymbol("FOR",sym.FOR);
 			}
 "read"          {	if(debug) System.out.println("token READ");
@@ -65,10 +66,12 @@ vector 			= {identificador}"["[0-9]+"]"
 "write"         {	if(debug) System.out.println("token WRITE");
 			return sf.newSymbol("WRITE",sym.WRITE);
 			}
-"bool"			{ 	if(debug) System.out.println("token BOOL");
+"bool"		{ 	if(debug) System.out.println("token BOOL");
 			return sf.newSymbol("BOOL",sym.BOOL);
-"int"			{ 	if(debug) System.out.println("token INT");
+			}
+"int"		{ 	if(debug) System.out.println("token INT");
 			return sf.newSymbol("INT",sym.INT);
+			}
 ":="            {	if(debug) System.out.println("token ASSIGN");
 			return sf.newSymbol("ASSIGN",sym.ASSIGN);
 			}
@@ -78,13 +81,13 @@ vector 			= {identificador}"["[0-9]+"]"
 "<"             {	if(debug) System.out.println("token LT");
 			return sf.newSymbol("LT",sym.LT);
 			}
-"<="			{ 	if(debug) System.out.println("token LTI");
+"<="		{ 	if(debug) System.out.println("token LTI");
 			return sf.newSymbol("LTI",sym.LTI);
 			}
-">"				{	if(debug) System.out.println("token RT");
+">"		{	if(debug) System.out.println("token RT");
 			return sf.newSymbol("RT",sym.RT);
 			}
-">="			{	if(debug) System.out.println("token RTI");
+">="		{	if(debug) System.out.println("token RTI");
 			return sf.newSymbol("RTI",sym.RTI);
 			}
 "+"             {	if(debug) System.out.println("token PLUS");
@@ -99,10 +102,10 @@ vector 			= {identificador}"["[0-9]+"]"
 "/"             {	if(debug) System.out.println("token OVER");
 			return sf.newSymbol("OVER",sym.OVER);
 			}
-"["				{	if(debug) System.out.println("token LR");
+"["		{	if(debug) System.out.println("token LR");
 			return sf.newSymbol("LR",sym.LR);
 			}
-"]"				{ 	if(debug) System.out.println("token RR");
+"]"		{ 	if(debug) System.out.println("token RR");
 			return sf.newSymbol("RR",sym.RR);
 			}
 "("             {	if(debug) System.out.println("token LPAREN");
