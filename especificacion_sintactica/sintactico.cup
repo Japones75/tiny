@@ -27,7 +27,6 @@ terminal READ;
 terminal WRITE;
 terminal String ID;
 terminal Integer NUM;
-terminal VE;
 terminal INT;
 terminal BOOL;
 terminal ASSIGN;
@@ -285,7 +284,7 @@ tipo	INT:entero
 							System.out.println("\t regla 12c"); 
 						RESUL= new NodoValor(entero);
 					:}
-		BOOL:bool
+BOOL:bool
 					{
 						: if(modoDepuracion) 
 							System.out.println("\t regla 12c"); 
