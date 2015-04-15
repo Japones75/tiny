@@ -33,11 +33,14 @@ import java_cup.runtime.*;
 
 
 
-numero			= -?[0-9]+/*Numero negativos y positivos*/
-identificador	= [a-zA-Z0-9]+
-nuevalinea		= \n | \n\r | \r\n
-espacio			= [ \t]+
-vector 			= {identificador}"["[0-9]+"]"
+digito		= [0-9]
+numero		= {digito}+
+letra		= [a-zA-Z]
+identificador	= {letra}+
+nuevalinea	= \n | \n\r | \r\n
+espacio		= [ \t]+
+vector		= {identificador}"["[0-9]+"]"
+
 %%
 "if"            {	if(debug) System.out.println("token IF");
 			return sf.newSymbol("IF",sym.IF);
@@ -60,6 +63,9 @@ vector 			= {identificador}"["[0-9]+"]"
 "for"		{ 	if(debug) System.out.println("token FOR");
 			return sf.newSymbol("FOR",sym.FOR);
 			}
+"begin"		{ 	if(debug) System.out.println("token BEGIN");
+			return sf.newSymbol("BEGIN",sym.BEGIN);
+			}
 "read"          {	if(debug) System.out.println("token READ");
 			return sf.newSymbol("READ",sym.READ);
 			}
@@ -71,6 +77,9 @@ vector 			= {identificador}"["[0-9]+"]"
 			}
 "int"		{ 	if(debug) System.out.println("token INT");
 			return sf.newSymbol("INT",sym.INT);
+			}
+"void"		{ 	if(debug) System.out.println("token VOID");
+			return sf.newSymbol("VOID",sym.VOID);
 			}
 ":="            {	if(debug) System.out.println("token ASSIGN");
 			return sf.newSymbol("ASSIGN",sym.ASSIGN);
@@ -87,14 +96,17 @@ vector 			= {identificador}"["[0-9]+"]"
 "<"             {	if(debug) System.out.println("token LT");
 			return sf.newSymbol("LT",sym.LT);
 			}
-"<="		{ 	if(debug) System.out.println("token LTI");
+"<="		{ 	if(debug) System.out.println("token LTE");
 			return sf.newSymbol("LTI",sym.LTI);
 			}
 ">"		{	if(debug) System.out.println("token RT");
 			return sf.newSymbol("RT",sym.RT);
 			}
-">="		{	if(debug) System.out.println("token RTI");
+">="		{	if(debug) System.out.println("token RTE");
 			return sf.newSymbol("RTI",sym.RTI);
+			}
+"!="		{	if(debug) System.out.println("token DIF");
+			return sf.newSymbol("DIF",sym.DIF);
 			}
 "+"             {	if(debug) System.out.println("token PLUS");
 			return sf.newSymbol("PLUS",sym.PLUS);
@@ -108,10 +120,10 @@ vector 			= {identificador}"["[0-9]+"]"
 "/"             {	if(debug) System.out.println("token OVER");
 			return sf.newSymbol("OVER",sym.OVER);
 			}
-"["		{	if(debug) System.out.println("token LR");
+"["		{	if(debug) System.out.println("token LCORC");
 			return sf.newSymbol("LR",sym.LR);
 			}
-"]"		{ 	if(debug) System.out.println("token RR");
+"]"		{ 	if(debug) System.out.println("token RCORC");
 			return sf.newSymbol("RR",sym.RR);
 			}
 "("             {	if(debug) System.out.println("token LPAREN");
@@ -122,6 +134,9 @@ vector 			= {identificador}"["[0-9]+"]"
 			}
 ";"             {	if(debug) System.out.println("token SEMI");
 			return sf.newSymbol("SEMI",sym.SEMI);
+			}
+","             {	if(debug) System.out.println("token COMA");
+			return sf.newSymbol("COMA",sym.COMA);
 			}
 {numero}        {	if(debug) System.out.println("token NUM");
 			return sf.newSymbol("NUM",sym.NUM,new Integer(yytext()));
