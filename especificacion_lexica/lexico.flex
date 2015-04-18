@@ -34,12 +34,12 @@ import java_cup.runtime.*;
 
 
 digito		= [0-9]
-numero		= {digito}+
+numero		= -?{digito}+
 letra		= [a-zA-Z]
 identificador	= {letra}+
 nuevalinea	= \n | \n\r | \r\n
 espacio		= [ \t]+
-vector		= {identificador}"["[0-9]+"]"
+
 
 %%
 "if"            {	if(debug) System.out.println("token IF");
@@ -51,6 +51,12 @@ vector		= {identificador}"["[0-9]+"]"
 "else"          {	if(debug) System.out.println("token ELSE");
 			return sf.newSymbol("ELSE",sym.ELSE);
 			}
+"for"		{ 	if(debug) System.out.println("token FOR");
+			return sf.newSymbol("FOR",sym.FOR);
+			}
+"begin"		{ 	if(debug) System.out.println("token BEGIN");
+			return sf.newSymbol("BEGIN",sym.BEGIN);
+			}
 "end"           {	if(debug) System.out.println("token END");
 			return sf.newSymbol("END",sym.END);
 			}
@@ -59,12 +65,6 @@ vector		= {identificador}"["[0-9]+"]"
 			}
 "until"         {	if(debug) System.out.println("token UNTIL");
 			return sf.newSymbol("UNTIL",sym.UNTIL);
-			}
-"for"		{ 	if(debug) System.out.println("token FOR");
-			return sf.newSymbol("FOR",sym.FOR);
-			}
-"begin"		{ 	if(debug) System.out.println("token BEGIN");
-			return sf.newSymbol("BEGIN",sym.BEGIN);
 			}
 "read"          {	if(debug) System.out.println("token READ");
 			return sf.newSymbol("READ",sym.READ);
@@ -90,23 +90,24 @@ vector		= {identificador}"["[0-9]+"]"
 "||"             {	if(debug) System.out.println("token OR");
 			return sf.newSymbol("OR",sym.OR);
 			}
-"="             {	if(debug) System.out.println("token EQ");
-			return sf.newSymbol("EQ",sym.EQ);
-			}
-"<"             {	if(debug) System.out.println("token LT");
-			return sf.newSymbol("LT",sym.LT);
-			}
 "<="		{ 	if(debug) System.out.println("token LTE");
 			return sf.newSymbol("LTI",sym.LTI);
-			}
-">"		{	if(debug) System.out.println("token RT");
-			return sf.newSymbol("RT",sym.RT);
 			}
 ">="		{	if(debug) System.out.println("token RTE");
 			return sf.newSymbol("RTI",sym.RTI);
 			}
 "!="		{	if(debug) System.out.println("token DIF");
 			return sf.newSymbol("DIF",sym.DIF);
+			}
+
+"="             {	if(debug) System.out.println("token EQ");
+			return sf.newSymbol("EQ",sym.EQ);
+			}
+"<"             {	if(debug) System.out.println("token LT");
+			return sf.newSymbol("LT",sym.LT);
+			}
+">"		{	if(debug) System.out.println("token RT");
+			return sf.newSymbol("RT",sym.RT);
 			}
 "+"             {	if(debug) System.out.println("token PLUS");
 			return sf.newSymbol("PLUS",sym.PLUS);
@@ -121,10 +122,10 @@ vector		= {identificador}"["[0-9]+"]"
 			return sf.newSymbol("OVER",sym.OVER);
 			}
 "["		{	if(debug) System.out.println("token LCORC");
-			return sf.newSymbol("LR",sym.LR);
+			return sf.newSymbol("LCORC",sym.LCORC);
 			}
 "]"		{ 	if(debug) System.out.println("token RCORC");
-			return sf.newSymbol("RR",sym.RR);
+			return sf.newSymbol("RCORC",sym.RCORC);
 			}
 "("             {	if(debug) System.out.println("token LPAREN");
 			return sf.newSymbol("LPAREN",sym.LPAREN);
@@ -138,12 +139,20 @@ vector		= {identificador}"["[0-9]+"]"
 ","             {	if(debug) System.out.println("token COMA");
 			return sf.newSymbol("COMA",sym.COMA);
 			}
+"return"      	{	if(debug) System.out.println("token RETU");
+			return sf.newSymbol("RETU",sym.RETU);
+			}
+
+
+
 {numero}        {	if(debug) System.out.println("token NUM");
 			return sf.newSymbol("NUM",sym.NUM,new Integer(yytext()));
 			}
 {identificador}	{	if(debug) System.out.println("token ID");
 				return sf.newSymbol("ID",sym.ID,new String(yytext()));
 			}
+
+
 {nuevalinea}       {lineanum++;}
 {espacio}    { /* saltos espacios en blanco*/}
 "{"[^}]+"}"  { /* salto comentarios */ if(debug) System.out.println("token COMENTARIO"); }
