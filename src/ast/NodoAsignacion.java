@@ -1,26 +1,26 @@
 package ast;
 
 public class NodoAsignacion extends NodoBase {
-	private NodoBase identificador;
+	private String identificador;
 	private NodoBase expresion;
 	
-	public NodoAsignacion(NodoBase identificador) {
+	public NodoAsignacion(String identificador) {
 		super();
 		this.identificador = identificador;
 		this.expresion = null;
 	}
 	
-	public NodoAsignacion(NodoBase identificador, NodoBase expresion) {
+	public NodoAsignacion(String identificador, NodoBase expresion) {
 		super();
 		this.identificador = identificador;
 		this.expresion = expresion;
 	}
 
-	public NodoBase getIdentificador() {
+	public String getIdentificador() {
 		return identificador;
 	}
 
-	public void setIdentificador(NodoBase identificador) {
+	public void setIdentificador(String identificador) {
 		this.identificador = identificador;
 	}
 
