@@ -91,10 +91,10 @@ espacio		= [ \t]+
 			return sf.newSymbol("OR",sym.OR);
 			}
 "<="		{ 	if(debug) System.out.println("token LTE");
-			return sf.newSymbol("LTI",sym.LTI);
+			return sf.newSymbol("LTE",sym.LTE);
 			}
 ">="		{	if(debug) System.out.println("token RTE");
-			return sf.newSymbol("RTI",sym.RTI);
+			return sf.newSymbol("RTE",sym.RTE);
 			}
 "!="		{	if(debug) System.out.println("token DIF");
 			return sf.newSymbol("DIF",sym.DIF);
