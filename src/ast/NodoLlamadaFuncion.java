@@ -34,7 +34,7 @@ public class NodoLlamadaFuncion extends NodoBase {
 		return parametros;
 	}
 
-	public void setParametros(NodoBase parametros) {
+	public void setParametros( NodoBase parametros) {
 		this.parametros = parametros;
 	}
 

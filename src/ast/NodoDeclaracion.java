@@ -1,7 +1,7 @@
 package ast;
 
 public class NodoDeclaracion extends NodoBase {
-	private NodoBase dato;
+	private String dato;
 	private NodoBase expresion;
 
 	public NodoDeclaracion()
@@ -11,17 +11,17 @@ public class NodoDeclaracion extends NodoBase {
 		this.expresion = null;
 	}	
 	
-	public NodoDeclaracion(NodoBase dato, NodoBase expresion) {
+	public NodoDeclaracion(String dato, NodoBase expresion) {
 		super();
 		this.dato = dato;
 		this.expresion = expresion;
 	}
 
-	public NodoBase getDato() {
+	public String getDato() {
 		return dato;
 	}
 
-	public void setDato(NodoBase dato) {
+	public void setDato(String dato) {
 		this.dato = dato;
 	}
 

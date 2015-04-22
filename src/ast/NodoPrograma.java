@@ -5,11 +5,6 @@ public class NodoPrograma extends NodoBase {
 	private NodoBase funciones;
 	private NodoBase cuerpo;
 
-	public NodoPrograma() {
-		super();
-		this.funciones = null;
-		this.cuerpo = null;
-	}
 
 	public NodoPrograma(NodoBase cuerpo) {
 		super();

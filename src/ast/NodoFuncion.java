@@ -2,7 +2,7 @@ package ast;
 
 public class NodoFuncion extends NodoBase {
 
-	private NodoBase t_fun;
+	private String t_fun;
 	private NodoBase args;
 	private NodoBase bloque;
 
@@ -13,24 +13,24 @@ public class NodoFuncion extends NodoBase {
 		this.bloque = null;
 	}
 
-	public NodoFuncion(NodoBase t_fun, NodoBase args, NodoBase bloque) {
+	public NodoFuncion(String t_fun, NodoBase args, NodoBase bloque) {
 		super();
 		this.t_fun = t_fun;
 		this.args = args;
 		this.bloque = bloque;
 	}
 
-	public NodoFuncion(NodoBase t_fun, NodoBase bloque) {
+	public NodoFuncion(String t_fun, NodoBase bloque) {
 		super();
 		this.t_fun = t_fun;
 		this.bloque = bloque;
 	}
 
-	public NodoBase getTFun(){
+	public String getTFun(){
 		return t_fun;
 	}
 
-	public void setTFun(NodoBase t_fun) {
+	public void setTFun(String t_fun) {
 		this.t_fun = t_fun;
 	}
 

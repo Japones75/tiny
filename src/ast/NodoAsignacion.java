@@ -2,12 +2,12 @@ package ast;
 
 public class NodoAsignacion extends NodoBase {
 	private String identificador;
-	private NodoBase expresion;
+	private NodoBase expresion = null;
 	
 	public NodoAsignacion(String identificador) {
 		super();
 		this.identificador = identificador;
-		this.expresion = null;
+
 	}
 	
 	public NodoAsignacion(String identificador, NodoBase expresion) {
