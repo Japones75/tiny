@@ -9,15 +9,7 @@ public class Util {
 		  sangria+=2;
 		  while (raiz != null) {
 		    printSpaces();
-		    if(raiz instanceof NodoPrograma)
-		    {
-		    	NodoPrograma nodo = (NodoPrograma)raiz;
-		    	if(nodo.getFunciones()!=null)
-		    		imprimirAST(nodo.getFunciones());
-		    	imprimirAST(nodo.getCuerpo());
-		    	System.out.println(nodo.getCuerpo());
-		    }
-		    else if (raiz instanceof  NodoIf)
+		    if (raiz instanceof  NodoIf)
 		    	System.out.println("If");
 		    else if (raiz instanceof  NodoRepeat)
 		    	System.out.println("Repeat");
@@ -35,7 +27,27 @@ public class Util {
 		    		|| raiz instanceof NodoValor
 		    		|| raiz instanceof NodoIdentificador )
 		    	imprimirNodo(raiz);
-		    else System.out.println("Tipo de nodo desconocido");;
+		    
+		    else if (raiz instanceof  NodoDeclaracion)
+		    	System.out.println("Declaracion");
+		    
+		    else if (raiz instanceof  NodoFor)
+		    	System.out.println("For");
+		    
+		    else if (raiz instanceof  NodoFuncion)
+		    	System.out.println("Funcion");
+		    
+		    else if (raiz instanceof  NodoLlamadaFuncion)
+		    	System.out.println("Llamar Funcion " + ((NodoLlamadaFuncion)raiz).getIdentificador());
+		    
+		    else if (raiz instanceof  NodoPrograma)
+		    	System.out.println("Programa");
+		    
+		    else if (raiz instanceof  NodoReturn)
+		    	System.out.println("Return");
+		    
+		    
+		    else System.out.println("Tipo de nodo desconocido");
 		    
 		    /* Hago el recorrido recursivo */
 		    if (raiz instanceof  NodoIf){
@@ -70,7 +82,55 @@ public class Util {
 		    	printSpaces();
 		    	System.out.println("**Expr Derecha Operacion**");		    	
 		    	imprimirAST(((NodoOperacion)raiz).getOpDerecho());
-		    }
+		    } else if (raiz instanceof NodoDeclaracion) {
+		    	printSpaces();
+		    	System.out.println("**Expresion Declaracion**");
+		    	imprimirAST(((NodoDeclaracion)raiz).getExpresion());
+			} else if(raiz instanceof NodoFor) {
+				printSpaces();
+		    	System.out.println("**Asignacion For**");
+		    	imprimirAST(((NodoFor)raiz).getAsignacion());
+		    	printSpaces();
+		    	System.out.println("**Expresion For**");
+		    	imprimirAST(((NodoFor)raiz).getExpresion());
+		    	printSpaces();
+		    	System.out.println("**Paso For**");
+		    	imprimirAST(((NodoFor)raiz).getPaso());
+		    	printSpaces();
+		    	System.out.println("**Cuerpo For**");
+		    	imprimirAST(((NodoFor)raiz).getCuerpo());
+			} else if(raiz instanceof NodoFuncion) {
+		    	printSpaces();
+		    	System.out.println("**Bloque Funcion**");
+		    	imprimirAST(((NodoFuncion)raiz).getBloque());
+		    	if(((NodoFuncion)raiz).getArgs()!=null){
+		    		System.out.println("**Args Funcion**");
+			    	imprimirAST(((NodoFuncion)raiz).getArgs());
+			    	printSpaces();
+		    	}
+			} else if(raiz instanceof NodoIdentificador) {
+				printSpaces();
+		    	System.out.println("**Expresion Identificador**");
+		    	imprimirAST(((NodoIdentificador)raiz).getExpresion());
+			} else if(raiz instanceof NodoLlamadaFuncion) {
+				printSpaces();
+		    	System.out.println("**Parametros Llamada Funcion**");
+		    	imprimirAST(((NodoLlamadaFuncion)raiz).getParametros());
+			} else if(raiz instanceof NodoPrograma) {
+		    	printSpaces();
+		    	System.out.println("**Cuerpo Programa**");
+		    	imprimirAST(((NodoPrograma)raiz).getCuerpo());
+		    	if(((NodoPrograma)raiz).getFunciones()!=null){
+		    		printSpaces();
+			    	System.out.println("**Funciones Programa**");
+			    	imprimirAST(((NodoPrograma)raiz).getFunciones());
+		    	}
+			} else if(raiz instanceof NodoReturn) {
+				printSpaces();
+		    	System.out.println("**Expresion Return**");
+		    	imprimirAST(((NodoReturn)raiz).getExpresion());
+			} 
+		    
 		    raiz = raiz.getHermanoDerecha();
 		  }
 		  sangria-=2;
@@ -97,10 +157,18 @@ static void imprimirNodo( NodoBase raiz )
 	
 	if(	raiz instanceof NodoOperacion ){
 		tipoOp sel=((NodoOperacion) raiz).getOperacion();
-		if(sel==tipoOp.menor)
-			System.out.println("<"); 
+		if(sel==tipoOp.menor_igual)
+			System.out.println("<=");
+		if(sel==tipoOp.mayor_igual)
+			System.out.println(">=");
+		if(sel==tipoOp.diferente)
+			System.out.println("!=");
 		if(sel==tipoOp.igual)
-			System.out.println("=");
+			System.out.println("="); 
+		if(sel==tipoOp.menor)
+			System.out.println("<");
+		if(sel==tipoOp.mayor)
+			System.out.println(">");
 		if(sel==tipoOp.mas)
 			System.out.println("+");
 		if(sel==tipoOp.menos)
