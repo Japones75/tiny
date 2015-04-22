@@ -26,8 +26,7 @@ public class NodoPrograma extends NodoBase {
 		return funciones;
 	}
 
-	public void getFunciones(NodoBase funciones) {
-		super();
+	public void setFunciones(NodoBase funciones) {
 		this.funciones = funciones;
 	}
 
@@ -35,8 +34,7 @@ public class NodoPrograma extends NodoBase {
 		return cuerpo;
 	}
 
-	public void getFunciones(NodoBase cuerpo) {
-		super();
+	public void setCuerpo(NodoBase cuerpo) {
 		this.cuerpo = cuerpo;
 	}
 }

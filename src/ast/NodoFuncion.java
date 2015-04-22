@@ -31,7 +31,6 @@ public class NodoFuncion extends NodoBase {
 	}
 
 	public void setTFun(NodoBase t_fun) {
-		super();
 		this.t_fun = t_fun;
 	}
 
@@ -40,7 +39,6 @@ public class NodoFuncion extends NodoBase {
 	}
 
 	public void setArgs(NodoBase args) {
-		super();
 		this.args = args;
 	}
 
@@ -49,7 +47,6 @@ public class NodoFuncion extends NodoBase {
 	}
 
 	public void setBloque(NodoBase bloque) {
-		super();
 		this.bloque = bloque;
 	}
 }

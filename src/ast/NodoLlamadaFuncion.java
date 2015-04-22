@@ -22,19 +22,19 @@ public class NodoLlamadaFuncion extends NodoBase {
 		this.identificador = identificador;
 	}
 
-	public String getIdentificador(String identificador) {
+	public String getIdentificador() {
 		return identificador;
 	}
 
-	public void setIdentificador() {
+	public void setIdentificador(String identificador) {
 		this.identificador = identificador;
 	}
 
-	public NodoBase getParametros(NodoBase parametros) {
+	public NodoBase getParametros() {
 		return parametros;
 	}
 
-	public void setParametros() {
+	public void setParametros(NodoBase parametros) {
 		this.parametros = parametros;
 	}
 
